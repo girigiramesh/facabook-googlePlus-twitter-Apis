@@ -48,7 +48,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private LoginButton loginButton;
     private CallbackManager callbackManager;
 
-
     private static final int RC_SIGN_IN = 7;
     private GoogleApiClient mGoogleApiClient;
     private ProgressDialog mProgressDialog;
@@ -92,7 +91,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         };
         accessTokenTracker.startTracking();
         profileTracker.startTracking();
-
 
         btnSignIn = (SignInButton) findViewById(R.id.btn_sign_in);
         btnSignOut = (Button) findViewById(R.id.btn_sign_out);
