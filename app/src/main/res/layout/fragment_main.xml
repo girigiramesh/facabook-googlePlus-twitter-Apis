@@ -78,4 +78,11 @@
         android:layout_height="wrap_content"
         android:text="@string/btn_revoke_access"
         android:visibility="gone" />
+
+    <com.twitter.sdk.android.core.identity.TwitterLoginButton
+        android:id="@+id/twitter_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clickable="true" />
 </LinearLayout>
