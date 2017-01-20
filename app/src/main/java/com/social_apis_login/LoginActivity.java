@@ -35,6 +35,10 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+
+import io.fabric.sdk.android.Fabric;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
     private static final String TAG = LoginActivity.class.getSimpleName();
@@ -54,6 +58,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private LinearLayout llProfileLayout;
     private ImageView imgProfilePic;
     private TextView txtName, txtEmail;
+
+    private static final String TWITTER_KEY = "Wkhj7xTkddau1tfm3bJeUS30w";
+    private static final String TWITTER_SECRET = "HBYd54pZdQLmGjQ9rnHuRNGNUJOKGJO4J6VY0ZrYVZI3c4e6Fc";
 
     public LoginActivity() {
         // Required empty public constructor
@@ -111,6 +118,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         // Customizing G+ button
         btnSignIn.setSize(SignInButton.SIZE_STANDARD);
         btnSignIn.setScopes(gso.getScopeArray());
+
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+        Fabric.with(this, new Twitter(authConfig));
+        startLoginActivity();
     }
 
     @Override
@@ -285,5 +296,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             // Signed out, show unauthenticated UI.
             updateUI(false);
         }
+    }
+
+    private void startLoginActivity() {
+        startActivity(new Intent(this, AndroidTwitterExample.class));
     }
 }
